@@ -1,3 +1,7 @@
+<?php
+require '../dbConfig/config.php';
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -10,33 +14,43 @@
   <body>
     <!--  -->
     <?php require '../Common/UsersHeader.php'; ?>
-
+<?php
+$query = "SELECT * FROM products";
+$query_solution = mysqli_query($con, $query);
+if ($query_solution) {
+  while($row = mysqli_fetch_array($query_solution)){
+?>
+<form class="" action="viewproduct.php?ID=<?php echo $row['id'] ?>" method="post">
     <div class="container">
       <div class="row">
         <div class="col-md-4">
-          <img src="../Images/Product_Images/canon77D.jpg" alt="Product Image" style="width:16rem;height:14rem;">
+          <img src="../Images/Product_Images/<?php echo $row['image'] ?>" alt="Product Image" style="width:16rem;height:14rem;">
         </div>
         <div class="col-md-5">
           <div class="row">
-            <h4>Model : Canon 77D</h4>
+            <h4>Model : <?php echo $row['Name'] ?></h4>
           </div>
           <div class="row">
-            <h4>Product Type : Camera</h4>
+            <h4>Product Type : <?php echo $row['type'] ?></h4>
           </div>
           <div class="row">
-            <h4>Description : 102MP</h4>
+            <h4>Description : <?php echo $row['description'] ?></h4>
           </div>
         </div>
         <div class="col-md-3">
           <div class="row">
-            <h4>Price : 1200/-</h4>
+            <h4>Price : <?php echo $row['price'] ?>/-</h4>
           </div>
           <div class="row">
-            <button type="button" class="btn btn-sm btn-outline-primary" name="button">Add to cart</button>
+            <button type="submit" class="btn btn-sm btn-outline-primary" name="button">Get</button>
           </div>
         </div>
       </div>
     </div>
-
+  </form>
+    <?php
+      }
+    }
+     ?>
   </body>
 </html>

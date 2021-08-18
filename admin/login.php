@@ -1,5 +1,5 @@
 <?php
-require 'dbconfig/config.php';
+require '../dbconfig/config.php';
 session_start();
 ?>
 <!DOCTYPE html>
@@ -17,8 +17,8 @@ session_start();
       <center>
       <h1>Login</h1>
       <div class="col-md-5">
-        <label class="form-label" for="">Enter Email</label>
-        <input type="text" name="email" class="form-control" value="">
+        <label class="form-label" for="">Enter Username</label>
+        <input type="text" name="username" class="form-control" value="">
       </div>
       <div class="col-md-5">
         <label class="form-label" for="">Enter Password</label>
@@ -33,30 +33,11 @@ session_start();
 </html>
 <?php
 if(isset($_POST['login_btn'])){
-  $email = $_POST['email'];
-  $password = $_POST['password'];
-
-  $query = "select * from users where Email='$email' and Password='$password'";
-  $query_Solution = mysqli_query($con, $query);
-
-  try{
-
-  if(mysqli_num_rows($query_Solution) > 0)
-  {
-    while ($row = mysqli_fetch_array($query_Solution)) {
-      $_SESSION['userid'] = $row['ID'];
-      $_SESSION['name'] = $row['Name'];
-      $_SESSION['email'] = $row['Email'];
-    }
-    header('location:Users/Home.php');
+  if(($_POST['username'] == 'Admin') && ($_POST['password'] == 'Admin@123#')){
+    echo "<script>window.location = 'home.php'</script>";
   }
-  else
-  {
-    echo'<script type="text/javascript"> alert("Check Username and Password")</script>';
+  else{
+    echo "<script>alert('Error')</script>";
   }
-  }
-  catch(Exception $e){
-        echo 'Message: ' .$e->getMessage();
-      }
 }
 ?>

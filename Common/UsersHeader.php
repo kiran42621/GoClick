@@ -11,14 +11,20 @@
         Rent Accessories
       </a>
       <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <li><a class="dropdown-item" href="#">Camera</a></li>
+        <li><a class="dropdown-item" href="home.php">Camera</a></li>
         <li><a class="dropdown-item" href="#">Lens</a></li>
         <li><a class="dropdown-item" href="#">Go Pro</a></li>
         <li><a class="dropdown-item" href="#">Accessories</a></li>
       </ul>
     </li>
     <li class="nav-item">
-      <a class="nav-link active" aria-current="page" href="#">Event Photography</a>
+      <a class="nav-link active" aria-current="page" href="myrequest.php">My Request</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="ViewPhotographers.php">Hire Photographers</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="myorders.php">My Orders</a>
     </li>
   </ul>
   <form class="d-flex">

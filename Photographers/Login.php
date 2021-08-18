@@ -1,4 +1,7 @@
-<?php require '../dbconfig/config.php'; ?>
+<?php require '../dbconfig/config.php';
+session_reset();
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -33,20 +36,24 @@ if(isset($_POST['login_btn'])){
   $email = $_POST['email'];
   $password = $_POST['password'];
 
-  $query = "select * from users where Email='$email' and Password='$password'";
+  $query = "select * from photographers where Email='$email' and Password='$password'";
   $query_Solution = mysqli_query($con, $query);
 
   try{
 
   if(mysqli_num_rows($query_Solution) > 0)
   {
-
-    header('location:Users/Home.php');
+    while ($row = mysqli_fetch_array($query_Solution)) {
+      $_SESSION['userid'] = $row['ID'];
+      $_SESSION['name'] = $row['Name'];
+      $_SESSION['email'] = $row['Email'];
+    }
+    header('location:Home.php');
 
   }
   else
   {
-    echo'<script type="text/javascript"> alert("Yaaro Neenu")</script>';
+    echo'<script type="text/javascript"> alert("Check Username and Password")</script>';
   }
   }
   catch(Exception $e){

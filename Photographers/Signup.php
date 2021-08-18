@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <form class="" action="signup.php" method="post">
+    <form class="" action="signup.php" method="post" enctype="multipart/form-data">
     <div class="container bg-light my-5 py-5">
       <center>
       <h1>Sign Up</h1>
@@ -38,7 +38,11 @@
         <label class="form-label" for="">Skills</label>
         <input type="text" name="Skills" class="form-control" value="">
       </div>
-      <input type="submit" name="submit_btn" class="btn btn-primary" value="SignUp">
+      <div class="col-md-5">
+        <label class="form-label" for="">Picture</label>
+        <input type="file" name="Image" class="form-control" value="">
+      </div>
+      <input type="submit" name="submit_btn" class="btn btn-primary mt-3" value="SignUp">
       </center>
     </div>
     </form>
@@ -51,8 +55,16 @@
     $email = $_POST['email'];
     $password = $_POST['password'];
     $mobile = $_POST['Mobile'];
+    $company = $_POST['Company'];
+    $skills = $_POST['Skills'];
 
-    $query = "select * from users where Name='$Name'";
+
+    $image_name = $_FILES['Image']['name'];
+  	$tmp_name = $_FILES['Image']['tmp_name'];
+  	$folder= "../Images/Photographer_image/$image_name";
+  	move_uploaded_file($tmp_name, "../Images/Photographer_image/$image_name");
+
+    $query = "select * from photographers where Email='$email'";
     $query_Solution = mysqli_query($con,$query);
     try{
     if(mysqli_num_rows($query_Solution)>0){
@@ -60,12 +72,13 @@
     }
     else
     {
-      $query = "insert into users values('','$Name','$email','$mobile','$password')";
+      $query = "insert into photographers values('','$Name','$mobile','$email','$password','$company','$skills','$image_name')";
       $query_Solution = mysqli_query($con, $query);
 
       if($query_Solution)
       {
         echo'<script type="text/javascript"> alert("User Registered")</script>';
+        echo "<script>window.location = 'Login.php'</script>";
       }
       else{
         echo'<script type="text/javascript"> alert("Error Occured")</script>';

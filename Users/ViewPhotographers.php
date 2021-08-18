@@ -1,3 +1,6 @@
+<?php
+require "../dbConfig/config.php"
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -16,17 +19,25 @@
           <tr>
             <th scope="col">Photographer ID</th>
             <th scope="col">Name</th>
-            <th scope="col">Description</th>
+            <th scope="col">Skills</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
+          <?php
+            $query = "SELECT * FROM photographers";
+            $query_solution = mysqli_query($con, $query);
+            while($row = mysqli_fetch_array($query_solution)){
+          ?>
           <tr>
-            <td >1</td>
-            <td>Sujan</td>
-            <td>Vade alla Dodd Vade</td>
-            <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">View</button></td>
+            <td><?php echo $row['ID'] ?></td>
+            <td><?php echo $row['Name'] ?></td>
+            <td><?php echo $row['Skills'] ?></td>
+            <td><a href="PhotographerDetails.php?ID=<?php echo $row['ID'] ?>"><button type="button" class="btn btn-primary">View</button></a></td>
           </tr>
+          <?php
+        }
+       ?>
         </tbody>
       </table>
     </div>
