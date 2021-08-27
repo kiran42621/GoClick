@@ -41,13 +41,15 @@ session_start();
           <td><?php echo $row[1] ?></td>
           <td><?php echo $row[2] ?></td>
           <td><?php echo $row[3] ?></td>
-          <?php if ($row[3] == "Booked") { ?>
-          <td><input type="submit" value="Get" name="get" class="btn btn-sm btn-primary"/></td>
-          <?php }
+          <?php
+        if($row[3] == "Accepted"){
+          ?>
+          <td><input type="submit" value="Pick up" name="pickup" class="btn btn-sm btn-primary"/></td>
+          <?php
+        }
           else{ ?>
           <td>No Action</td>
           <?php } ?>
-
         </tr>
         </form>
         <?php
@@ -60,11 +62,12 @@ session_start();
   </body>
 </html>
 <?php
-if(isset($_POST['get'])){
+
+if(isset($_POST['pickup'])){
   $rrid = $_POST['rid'];
   $userid = $_SESSION['userid'];
   $date = date("Y-m-d");
-  $query = "UPDATE rent SET date='$date', status='Rented' WHERE id = '$rrid'";
+  $query = "UPDATE rent SET date='$date', status='Onrent' WHERE id = '$rrid'";
   $query_solution = mysqli_query($con, $query);
   if($query_solution){
     echo "<script>alert('Success')</script>";

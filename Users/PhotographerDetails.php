@@ -17,7 +17,7 @@ $pid = $_GET['ID'];
 
     <div class="container mt-2">
       <?php
-        $query = "SELECT * FROM photographers";
+        $query = "SELECT * FROM photographers WHERE ID = $pid";
         $query_solution = mysqli_query($con, $query);
         while($row = mysqli_fetch_array($query_solution)){
       ?>
@@ -28,7 +28,7 @@ $pid = $_GET['ID'];
           <h4>Business Name : <?php echo $row['Company'] ?></h4>
         </div>
         <div class="col-md-4">
-          <img src="../456.jpg" alt="Photographer_Image" style="height:18rem;width:100%;border-radius:70px;">
+          <img src="../Images/Photographer_image/<?php echo $row['Picture'] ?>" alt="Photographer_Image" style="height:18rem;width:100%;border-radius:70px;">
         </div>
       </div>
       <?php
@@ -36,25 +36,21 @@ $pid = $_GET['ID'];
    ?>
     </div>
     <div class="container-fluid my-2">
+      <center>
+        <h2>Sample Photos</h2>
+      </center>
       <div class="row">
+        <?php
+          $query = "SELECT * FROM samplephotos WHERE Photographer_Id = '$pid'";
+          $query_solution = mysqli_query($con, $query);
+          while($row = mysqli_fetch_array($query_solution)){
+        ?>
         <div class="col-md-4 my-1">
-          <img src="../123.png" alt="image" style="height:18rem;width:100%;">
+          <img src="../Images/Sample_image/<?php echo $row['Picture'] ?>" alt="image" style="height:18rem;width:100%;">
         </div>
-        <div class="col-md-4 my-1">
-          <img src="../123.png" alt="image" style="height:18rem;width:100%;">
-        </div>
-        <div class="col-md-4 my-1">
-          <img src="../123.png" alt="image" style="height:18rem;width:100%;">
-        </div>
-        <div class="col-md-4 my-1">
-          <img src="../123.png" alt="image" style="height:18rem;width:100%;">
-        </div>
-        <div class="col-md-4 my-1">
-          <img src="../123.png" alt="image" style="height:18rem;width:100%;">
-        </div>
-        <div class="col-md-4 my-1">
-          <img src="../123.png" alt="image" style="height:18rem;width:100%;">
-        </div>
+        <?php
+      }
+     ?>
       </div>
     </div>
     <div class="container mt-3">

@@ -42,9 +42,14 @@ session_start();
           <td><?php echo $row[1] ?></td>
           <td><?php echo $row[2] ?></td>
           <td><?php echo $row[3] ?></td>
-          <?php if ($row[3] == "Rented") { ?>
-          <td><input type="submit" value="Returned" name="get" class="btn btn-sm btn-primary"/></td>
+          <?php if ($row[3] == "Booked") { ?>
+          <td><input type="submit" value="Accept" name="accept" class="btn btn-sm btn-primary"/></td>
           <?php }
+          else if($row[3] == "Onrent"){
+            ?>
+            <td><input type="submit" value="Returned" name="return" class="btn btn-sm btn-primary"/></td>
+            <?php
+          }
           else{ ?>
           <td>No Action</td>
           <?php } ?>
@@ -61,7 +66,7 @@ session_start();
   </body>
 </html>
 <?php
-if(isset($_POST['get'])){
+if(isset($_POST['return'])){
   $rrid = $_POST['rid'];
   $date = date("Y-m-d");
   $date1 = $_POST['date'];
@@ -73,6 +78,19 @@ if(isset($_POST['get'])){
   $query_solution = mysqli_query($con, $query);
   if($query_solution){
     echo "<script>alert('Success, Please pay $datediff')</script>";
+    echo "<script>window.location = 'home.php'</script>";
+  }
+  else {
+    echo "<script>alert('Error')</script>";
+  }
+
+}
+if(isset($_POST['accept'])){
+  $rrid = $_POST['rid'];
+  $query = "UPDATE rent SET status='Accepted' WHERE id = '$rrid'";
+  $query_solution = mysqli_query($con, $query);
+  if($query_solution){
+    echo "<script>alert('Success')</script>";
     echo "<script>window.location = 'home.php'</script>";
   }
   else {
