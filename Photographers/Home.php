@@ -1,3 +1,4 @@
+<?php header('Location: Profile.php'); ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>

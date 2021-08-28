@@ -12,8 +12,39 @@ session_start();
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #FFFF03;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">GoClick</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="../index.php">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../Photographers/Login.php">Photographer Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../admin/Login.php">Admin Login</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" href="login.php">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="signup.php">Sign Up</a>
+          </li>
+        </ul>
+      </form>
+    </div>
+  </div>
+</nav>
     <form class="" action="login.php" method="post">
-    <div class="container bg-light my-5 py-5">
+    <div class="container bg-light my-5 py-5 border">
       <center>
       <h1>Login</h1>
       <div class="col-md-5">
@@ -24,8 +55,7 @@ session_start();
         <label class="form-label" for="">Enter Password</label>
         <input type="password" name="password" class="form-control" value="">
       </div>
-      <p>Dont have account?<a href="signup.html">Click Here</a></p>
-      <input type="submit" name="login_btn" class="btn btn-primary" value="LOGIN">
+      <input type="submit" name="login_btn" class="btn btn-primary mt-3" value="LOGIN">
       </center>
     </div>
     </form>

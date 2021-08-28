@@ -12,26 +12,64 @@ session_start();
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #FFFF03;">
+    <div class="container-fluid">
+    <a class="navbar-brand" href="#"><strong>GoClick</strong></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="home.php">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="addproduct.php">Add Product</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <input type="button" class="btn btn-sm btn-danger" name="" value="Logout">
+          </li>
+        </ul>
+      </form>
+    </div>
+    </div>
+    </nav>
+
     <div class="container">
       <h3><center>Add Product</center></h3>
       <form class="" action="addproduct.php" method="post" enctype="multipart/form-data">
-        <label for="">Name</label>
-        <input type="text" name="name" value=""><br>
-        <label for="">Image</label>
-        <input type="file" name="picture" value=""><br>
-        <label for="">type</label>
-        <select class="" name="type">
-          <option value="camera">Camera</option>
-          <option value="accessories">Accessories</option>
-          <option value="lens">Lens</option>
-        </select><br>
-        <label for="">Description</label>
-        <input type="text" name="description" value=""><br>
-        <label for="">Price</label>
-        <input type="number" name="price" value=""><br>
-        <label for="">Contact</label>
-        <input type="number" name="contact" value=""><br>
-        <input type="submit" name="add" value="Add Product">
+        <div class="row mt-3">
+          <label class="form-label" for="">Name</label>
+          <input type="text" class="form-control" name="name" value=""><br>
+        </div>
+        <div class="row mt-3">
+          <label class="form-label" for="">Image</label>
+          <input type="file" name="picture" class="form-control" value=""><br>
+        </div>
+        <div class="row mt-3">
+          <label class="form-label" for="">type</label>
+          <select name="type" class="form-select">
+            <option value="camera">Camera</option>
+            <option value="accessories">Accessories</option>
+            <option value="lens">Lens</option>
+          </select><br>
+        </div>
+        <div class="row mt-3">
+          <label class="form-label" for="">Description</label>
+          <input type="text" name="description" class="form-control" value=""><br>
+        </div>
+        <div class="row mt-3">
+          <label class="form-label" for="">Price</label>
+          <input type="number" name="price" class="form-control" value=""><br>
+        </div>
+        <div class="row mt-3">
+          <label class="form-label" for="">Contact</label>
+          <input type="number" name="contact" class="form-control" value=""><br>
+        </div>
+        <input type="submit" class="btn btn-primary" name="add" value="Add Product">
       </form>
     </div>
   </body>
