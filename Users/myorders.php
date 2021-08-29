@@ -16,7 +16,7 @@ session_start();
     require '../Common/UsersHeader.php';
     ?>
 <div class="container">
-    <table class="table table-striped">
+    <table class="table table-responsive table-striped table-hover border">
       <thead>
         <tr>
           <th>id</th>
@@ -29,13 +29,14 @@ session_start();
       <tbody>
         <?php
         $id = $_SESSION['email'];
-        $query = "SELECT a.id, b.name, a.date, a.status FROM rent as a, products as b WHERE a.productid = b.id AND a.userid = '$id'";
+        $query = "SELECT a.id, b.name, a.date, a.status, a.price FROM rent as a, products as b WHERE a.productid = b.id AND a.userid = '$id'";
         $query_solution = mysqli_query($con, $query);
         if ($query_solution){
           while ($row = mysqli_fetch_array($query_solution)){
             ?>
         <form class="" action="myorders.php" method="post">
         <input type="hidden" name="rid" value="<?php echo $row[0] ?>"/>
+        <input type="hidden" name="amt" value="<?php echo $row[4] ?>">
         <tr>
           <td><?php echo $row[0] ?></td>
           <td><?php echo $row[1] ?></td>
@@ -45,6 +46,11 @@ session_start();
         if($row[3] == "Accepted"){
           ?>
           <td><input type="submit" value="Pick up" name="pickup" class="btn btn-sm btn-primary"/></td>
+          <?php
+        }
+        else if($row[3] == "waiting for payment"){
+          ?>
+          <td><input type="submit" value="Make Payment" formaction="pay.php" name="payment" class="btn btn-sm btn-primary"/></td>
           <?php
         }
           else{ ?>

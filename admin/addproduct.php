@@ -26,6 +26,9 @@ session_start();
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="addproduct.php">Add Product</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="viewproduct.php">View Product</a>
+        </li>
       </ul>
       <form class="d-flex">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -55,6 +58,7 @@ session_start();
             <option value="camera">Camera</option>
             <option value="accessories">Accessories</option>
             <option value="lens">Lens</option>
+            <option value="gopro">Go Pro</option>
           </select><br>
         </div>
         <div class="row mt-3">

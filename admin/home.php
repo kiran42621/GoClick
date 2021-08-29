@@ -26,6 +26,9 @@ session_start();
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="addproduct.php">Add Product</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="viewproduct.php">View Product</a>
+        </li>
       </ul>
       <form class="d-flex">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -96,7 +99,7 @@ if(isset($_POST['return'])){
   if ($datediff <= 0) {
     $datediff = (int)$_POST['price'];
   }
-  $query = "UPDATE rent SET returndate='$date', status='Completed' WHERE id = '$rrid'";
+  $query = "UPDATE rent SET returndate='$date', price = '$datediff', status='waiting for payment' WHERE id = '$rrid'";
   $query_solution = mysqli_query($con, $query);
   if($query_solution){
     echo "<script>alert('Success, Please pay $datediff')</script>";

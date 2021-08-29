@@ -11,10 +11,10 @@
         Rent Accessories
       </a>
       <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <li><a class="dropdown-item" href="home.php">Camera</a></li>
-        <li><a class="dropdown-item" href="#">Lens</a></li>
-        <li><a class="dropdown-item" href="#">Go Pro</a></li>
-        <li><a class="dropdown-item" href="#">Accessories</a></li>
+        <li><a class="dropdown-item" href="home.php?device=Camera">Camera</a></li>
+        <li><a class="dropdown-item" href="home.php?device=Lens">Lens</a></li>
+        <li><a class="dropdown-item" href="home.php?device=GoPro">Go Pro</a></li>
+        <li><a class="dropdown-item" href="home.php?device=Accessories">Accessories</a></li>
       </ul>
     </li>
     <li class="nav-item">
@@ -30,7 +30,7 @@
   <form class="d-flex">
     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
       <li class="nav-item">
-        <input type="button" class="btn btn-sm btn-danger" name="" value="Logout">
+        <a href="../Common/logout.php"><input type="button" class="btn btn-sm btn-danger" name="" value="Logout"></a>
       </li>
     </ul>
   </form>

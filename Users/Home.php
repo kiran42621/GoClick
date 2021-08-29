@@ -16,6 +16,23 @@ session_start();
     <?php require '../Common/UsersHeader.php'; ?>
 <?php
 $query = "SELECT * FROM products";
+if(isset($_GET['device'])){
+if($_GET['device'] == "Camera"){
+  $query = "SELECT * FROM products WHERE type = 'camera'";
+}
+else if($_GET['device'] == "Lens"){
+  $query = "SELECT * FROM products WHERE type = 'lens'";
+}
+else if($_GET['device'] == "GoPro"){
+  $query = "SELECT * FROM products WHERE type = 'gopro'";
+}
+else if($_GET['device'] == "Accessories"){
+  $query = "SELECT * FROM products WHERE type = 'accessories'";
+}
+else{
+  $query = "SELECT * FROM products";
+}
+}
 $query_solution = mysqli_query($con, $query);
 if ($query_solution) {
   while($row = mysqli_fetch_array($query_solution)){

@@ -15,7 +15,7 @@ session_start()
     <!--  -->
     <?php require '../Common/UsersHeader.php'; ?>
     <div class="container-fluid">
-      <table class="table table-responsive table-stripped table-hover">
+      <table class="table table-responsive table-striped table-hover border">
         <thead>
           <tr>
             <th scope="col">ID</th>
