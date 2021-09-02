@@ -29,7 +29,7 @@ session_start()
         <tbody>
           <?php
             $cid = $_SESSION['userid'];
-            $query = "SELECT a.id, a.PhotographerId, a.ClientId, a.Date, a.Pphone, a.Status, b.Name FROM photographer_hiring as a , photographers as b WHERE a.ClientId = '$cid' AND a.PhotographerId = b.ID";
+            $query = "SELECT a.id, a.PhotographerId, a.ClientId, a.Date, b.Phone, a.Status, b.Name FROM photographer_hiring as a , photographers as b WHERE a.ClientId = '$cid' AND a.PhotographerId = b.ID";
             $query_solution = mysqli_query($con, $query);
             while($row = mysqli_fetch_array($query_solution)){
           ?>
@@ -40,7 +40,7 @@ session_start()
             <td><?php echo $row['id'] ?></td>
             <td><?php echo $row['Name'] ?></td>
             <td><?php echo $row['Date'] ?></td>
-            <td><?php echo $row['Pphone'] ?></td>
+            <td><?php echo $row['Phone'] ?></td>
             <td><?php echo $row['Status'] ?></td>
             <?php if ($row['Status'] == 'Request Cancel') {
               print("<td><button type='submit' name='cancel' class='btn btn-sm btn-danger'>Cancel</button></td>");

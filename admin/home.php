@@ -92,9 +92,12 @@ session_start();
 </html>
 <?php
 if(isset($_POST['return'])){
+  $datediff = 0;
   $rrid = $_POST['rid'];
   $date = date("Y-m-d");
   $date1 = $_POST['date'];
+  echo $date;
+  echo "<script>alert($date1)</script>";
   $datediff = (date_diff($date,$date1)) * (int)$_POST['price'];
   if ($datediff <= 0) {
     $datediff = (int)$_POST['price'];

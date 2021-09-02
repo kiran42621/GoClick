@@ -48,9 +48,9 @@ $data = [
     "description"       => "Capture the moments",
     //"image"             => "https://s29.postimg.org/r6dj1g85z/daft_punk.jpg",
     "prefill"           => [
-    "name"              => $_SESSION['userdata'][1],
-    "email"             => $_SESSION['userdata'][2],
-    "contact"           => $_SESSION['userdata'][3],
+    "name"              => $_SESSION['name'],
+    "email"             => $_SESSION['email'],
+    "contact"           => $_SESSION['contact'],
     ],
     "notes"             => [
     "address"           => "Hello World",

@@ -92,6 +92,7 @@ if(isset($_POST['login_btn'])){
       $_SESSION['userid'] = $row['ID'];
       $_SESSION['name'] = $row['Name'];
       $_SESSION['email'] = $row['Email'];
+      $_SESSION['contact'] = $row['Mobile'];
     }
     header('location:Users/Home.php');
   }

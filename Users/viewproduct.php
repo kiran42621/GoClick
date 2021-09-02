@@ -54,7 +54,7 @@ session_start();
                   </tr>
                   <tr>
                     <td>Date : </td>
-                    <td><input type="date" name="date" value="" min="<script>new Date()</script>" max="2018-12-31"></td>
+                    <td><input type="date" name="date" value="" min="<script>new Date()</script>" max="2030-12-31"></td>
                   </tr>
                 </tbody>
               </table>
@@ -79,7 +79,7 @@ if(isset($_POST['get'])){
   $query = "INSERT INTO rent VALUES ('','$userid','$id','$date','','','Booked')";
   $query_solution = mysqli_query($con, $query);
   if($query_solution){
-    echo "<script>alert('Success')</script>";
+    echo "<script>alert('Pending')</script>";
   }
   else {
     echo "<script>alert('Error')</script>";
